@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  
+  <ItemGroup>
+    <Compile Remove="wwwroot\**" />
+    <Content Remove="wwwroot\**" />
+    <EmbeddedResource Remove="wwwroot\**" />
+    <None Remove="wwwroot\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="ICD.Framework.InversionOfControl.Autofac" Version="6.3.16" />
+	  <PackageReference Include="ICD.Framework.Web" Version="6.3.17" />
+	  <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+	  <PackageReference Include="Autofac" Version="6.4.0" />
+	  <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+	  <PackageReference Include="AutoMapper" Version="11.0.1" />
+	  <PackageReference Include="ICD.Infrastructure.BusinessService" Version="6.2.42" />
+	  <PackageReference Include="ICD.Infrastructure.Data" Version="6.2.42" />
+	  <PackageReference Include="ICD.Infrastructure.Repository" Version="6.2.42" />
+
+
+	  <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+	  <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
+	  <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ICD.Base.BusinessServiceContract\ICD.Base.BusinessServiceContract.csproj" />
+    <ProjectReference Include="..\ICD.Base.BusinessService\ICD.Base.BusinessService.csproj" />
+    <ProjectReference Include="..\ICD.Base.Data\ICD.Base.Data.csproj" />
+    <ProjectReference Include="..\ICD.Base.RepositoryContract\ICD.Base.RepositoryContract.csproj" />
+    <ProjectReference Include="..\ICD.Base.Repository\ICD.Base.Repository.csproj" />
+    <ProjectReference Include="..\ICD.Base\ICD.Base.csproj" />
+  </ItemGroup>
+
+  <Target Name="FilterCopyLocal" DependsOnTargets="RunResolvePublishAssemblies" BeforeTargets="ResolveLockFileCopyLocalProjectDeps">
+    <ItemGroup>
+      <_CopyLocalButNotPublished Include="@(AllCopyLocalItems)" Exclude="@(ResolvedAssembliesToPublish)" />
+      <AllCopyLocalItems Remove="@(_CopyLocalButNotPublished)" />
+    </ItemGroup>
+  </Target>
+
+  <PropertyGroup>
+    <Version>6.1.7</Version>
+    <Company>MediTechSys</Company>
+    <Authors>Develop Team</Authors>
+    <Owners>MediTechSys</Owners>
+    <PackageIconUrl>http://172.16.100.52:90/base.png</PackageIconUrl>
+    <PackageProjectUrl>http://172.16.100.52/icd/base.git</PackageProjectUrl>
+  </PropertyGroup>
+
+</Project>
